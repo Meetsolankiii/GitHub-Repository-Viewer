@@ -1,13 +1,11 @@
 :root {
-<<<<<<< HEAD
-  --bg-main: #0d1117;
-  --bg-card: #161b22;
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
   --border-color: #30363d;
-  --text-primary: #c9d1d9;
-  --text-secondary: #8b949e;
-  --accent-blue: #58a6ff;
-  --accent-success: #238636;
-  --accent-success-hover: #2ea043;
+  --text-main: #c9d1d9;
+  --text-muted: #8b949e;
+  --accent-color: #58a6ff;
+  --gold-accent: #f1c40f;
   --error-color: #f85149;
   --error-bg: rgba(248, 81, 73, 0.1);
 }
@@ -19,34 +17,10 @@
 }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-.app-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  min-height: 100vh;
-}
-
-.app-header {
-=======
-  --bg-primary: #0d1117;
-  --bg-secondary: #161b22;
-  --border-color: #30363d;
-  --text-main: #c9d1d9;
-  --text-muted: #8b949e;
-  --accent-color: #58a6ff;
-  --gold-accent: #f1c40f;
-}
-
-body {
   background-color: var(--bg-primary);
   color: var(--text-main);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
 }
@@ -55,6 +29,7 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  min-height: 100vh;
 }
 
 .app-header {
@@ -66,17 +41,19 @@ body {
   font-size: 2.5rem;
   color: #fff;
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .app-header p {
   color: var(--text-muted);
 }
 
-/* Search Bar styling */
+/* Search Bar Styling */
 .search-form {
   display: flex;
   gap: 10px;
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .search-form input {
@@ -87,6 +64,13 @@ body {
   padding: 0.8rem 1rem;
   color: #fff;
   font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-form input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
 }
 
 .search-form button {
@@ -97,14 +81,19 @@ body {
   padding: 0.8rem 1.5rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background-color 0.2s;
 }
 
-.search-form button:hover {
+.search-form button:hover:not(:disabled) {
   background-color: #2ea44f;
 }
 
-/* Repo Card Layout Matrix */
+.search-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Repo Matrix Grid Layout */
 .repo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -112,18 +101,33 @@ body {
   margin-top: 1rem;
 }
 
+.list-meta {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+/* Repository Card Layout */
 .repo-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;
->>>>>>> e85541e (add new feature like top ranker)
   display: flex;
   flex-direction: column;
   position: relative;
   justify-content: space-between;
+  transition: transform 0.2s, border-color 0.2s;
 }
 
+.repo-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--text-muted);
+}
+
+/* Highlight Premium Top Match styling */
 .repo-card.top-ranked {
   border-color: var(--gold-accent);
   box-shadow: 0 4px 20px rgba(241, 196, 15, 0.15);
@@ -144,177 +148,6 @@ body {
 .card-header {
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  gap: 0.75rem;
-  margin-bottom: 2.5rem;
-  text-align: center;
-}
-
-.github-logo {
-  color: var(--text-primary);
-}
-
-.app-header h1 {
-  font-size: 1.75rem;
-  font-weight: 600;
-}
-
-/* Search Bar Styles */
-.search-container {
-  margin-bottom: 2.5rem;
-  width: 100%;
-}
-
-.search-form {
-  display: flex;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.search-input {
-  flex: 1;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  color: var(--text-primary);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.search-input:focus {
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
-}
-
-.search-input.input-error {
-  border-color: var(--error-color);
-}
-
-.search-button {
-  background-color: var(--accent-success);
-  border: 1px solid rgba(240, 246, 252, 0.1);
-  border-radius: 6px;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 0.5rem 1.25rem;
-  transition: background-color 0.2s;
-}
-
-.search-button:hover:not(:disabled) {
-  background-color: var(--accent-success-hover);
-}
-
-.search-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.validation-message {
-  color: var(--error-color);
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-}
-
-/* Loader Layout */
-.loader-container {
-  display: flex;
-  justify-content: center;
-  padding: 3rem 0;
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 3.5px solid var(--border-color);
-  border-top-color: var(--accent-blue);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Errors */
-.error-container {
-  background-color: var(--error-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  color: var(--error-color);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-
-/* Repositories Setup */
-.repo-list-heading {
-  font-size: 1.25rem;
-  font-weight: 400;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.75rem;
-}
-
-.count-badge {
-  background-color: rgba(110, 118, 129, 0.2);
-  border-radius: 20px;
-  color: var(--text-primary);
-  font-size: 0.85rem;
-  font-weight: 500;
-  padding: 0.15rem 0.5rem;
-  margin-left: 0.35rem;
-}
-
-.repo-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .repo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Repository Card Spec Details */
-.repo-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.repo-card:hover {
-  transform: translateY(-2px);
-  border-color: #8b949e;
-}
-
-.repo-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.repo-name {
-  color: var(--accent-blue);
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-  word-break: break-all;
-=======
   gap: 12px;
   margin-bottom: 1rem;
 }
@@ -342,73 +175,13 @@ body {
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
->>>>>>> e85541e (add new feature like top ranker)
+  word-break: break-all;
 }
 
 .repo-name:hover {
   text-decoration: underline;
 }
 
-<<<<<<< HEAD
-.badge {
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.12rem 0.5rem;
-  white-space: nowrap;
-}
-
-.repo-description {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin-bottom: 1.25rem;
-  flex-grow: 1;
-}
-
-.repo-metadata {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  align-items: center;
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.language-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #555555; /* Fallback default */
-}
-
-/* Sample Language Dot Mappings */
-.language-dot.javascript { background-color: #f1e05a; }
-.language-dot.typescript { background-color: #3178c6; }
-.language-dot.html { background-color: #e34c26; }
-.language-dot.css { background-color: #563d7c; }
-.language-dot.python { background-color: #3572a5; }
-.language-dot.java { background-color: #b07219; }
-
-.icon-star {
-  color: #e3b341;
-}
-
-.empty-state {
-  text-align: center;
-  padding: 3rem 0;
-  border: 1px dashed var(--border-color);
-  border-radius: 6px;
-  color: var(--text-secondary);
-=======
 .owner-name {
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -419,6 +192,7 @@ body {
   color: #adbac7;
   line-height: 1.4;
   margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
 .language-tag {
@@ -428,6 +202,8 @@ body {
   border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 500;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 .card-metrics {
@@ -438,6 +214,7 @@ body {
   color: var(--text-muted);
 }
 
+/* Custom Scoring Matrix View */
 .score-footer {
   border-top: 1px solid var(--border-color);
   padding-top: 0.8rem;
@@ -451,11 +228,20 @@ body {
   color: #34d399;
 }
 
-/* Spinner and Helpers */
+/* State Handlers: Spinners, Messages & Errors */
 .loader-container, .error-message, .empty-state, .welcome-state {
   text-align: center;
   padding: 3rem;
   color: var(--text-muted);
+}
+
+.error-message {
+  background-color: var(--error-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--error-color);
+  padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .spinner {
@@ -471,5 +257,4 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
->>>>>>> e85541e (add new feature like top ranker)
 }
