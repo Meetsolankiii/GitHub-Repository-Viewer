@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const SearchBar = ({ onSearch, isLoading }) => {
+<<<<<<< HEAD
   const [username, setUsername] = useState('');
   const [validationError, setValidationError] = useState('');
 
@@ -34,6 +35,28 @@ const SearchBar = ({ onSearch, isLoading }) => {
       </form>
       {validationError && <p className="validation-message">{validationError}</p>}
     </div>
+=======
+  const [input, setInput] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(input);
+  };
+
+  return (
+    <form className="search-form" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="e.g., react-native, e-commerce backend, dsa-roadmaps..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        disabled={isLoading}
+      />
+      <button type="submit" disabled={isLoading || !input.trim()}>
+        {isLoading ? 'Searching...' : 'Analyze'}
+      </button>
+    </form>
+>>>>>>> e85541e (add new feature like top ranker)
   );
 };
 
