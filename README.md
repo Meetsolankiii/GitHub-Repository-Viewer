@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# 🏆 GitHub Repository Viewer & Ranker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A dynamic, responsive React web application that searches GitHub repositories by topic or keyword and evaluates them using a **Custom Performance & Quality Scoring Algorithm**. Instead of relying purely on raw star counts, this application analyzes repository health metrics to surface the absolute best matches first.
 
-## Available Scripts
+🌐 **Live Demo:** [Your Vercel Deployment Link Here]
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Smart Keyword Search:** Queries the public GitHub REST API v3 in real-time based on technology stacks, topics, or keywords.
+- **Custom Rating Engine:** Evaluates and highlights repositories dynamically using a weighted quality formula.
+- **"Best Match" Premium Badge:** Automatically detects the #1 top-scoring repository in the search matrix and applies a premium layout styling.
+- **Robust Error Handling:** Safely intercepts API rate limits (403 errors), invalid search structures, and empty results states gracefully.
+- **Fully Responsive Matrix:** A modern CSS grid optimized for mobile, tablet, and desktop viewports utilizing GitHub's dark mode aesthetic color scheme.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧮 The Ranking Algorithm
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To accurately filter out stagnant repos with high historical stars but little current maintenance, the app passes every result through an internal dynamic weight equation:
 
-### `npm run build`
+$$\text{Quality Score} = (\text{Stars} \times 0.5) + (\text{Forks} \times 0.4) - (\text{Open Issues} \times 0.1) + \text{Recency Bonus}$$
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Equation Breakdown:
+* **Stars (50% Weight):** Establishes baseline community popularity.
+* **Forks (40% Weight):** Reflects hands-on project utility and developer implementation.
+* **Open Issues (-10% Penalty):** A high volume of open issues indicates potential bugs or project abandonment.
+* **Recency Bonus (+50 pts):** Granted automatically if the repository has been updated or committed to within the last 30 days.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📂 Project Architecture
 
-### `npm run eject`
+The application scales cleanly using a modular folder structure to separate API service handlers, math calculation utilities, and presentational UI components:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```text
+github-repo-viewer/
+├── public/
+└── src/
+    ├── assets/
+    │   └── App.css           # Custom dark mode UI layouts and grid matrices
+    ├── components/
+    │   ├── Loader.jsx        # Animated ranking engine loading spinner
+    │   ├── RepoCard.jsx      # Individual repository metric cards
+    │   ├── RepoList.jsx      # Map iterator for ranked data array 
+    │   └── SearchBar.jsx     # User input handler and validator
+    ├── services/
+    │   └── githubApi.js      # Encoded API endpoint service wrapper
+    ├── utils/
+    │   └── ranker.js         # Weighted sorting logic script
+    ├── App.js                # Core state coordinator component
+    └── index.js              # Application entry point
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🚀 Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Follow these steps to run the project locally on your machine:
+1. Clone the Repository
+Bash
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+git clone [https://github.com/Meetsolankiii/GitHub-Repository-Viewer.git](https://github.com/Meetsolankiii/GitHub-Repository-Viewer.git)
+cd GitHub-Repository-Viewer
 
-## Learn More
+2. Install Project Dependencies
+Bash
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Start the Local Development Server
+Bash
 
-### Code Splitting
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Open http://localhost:3000 inside your web browser to check out the app!
+🛠️ Built With
 
-### Analyzing the Bundle Size
+    React.js - Component UI State Management
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    GitHub REST API v3 - Global Developer Project Data Source
 
-### Making a Progressive Web App
+    CSS3 Variables & Flexbox/Grid - Responsive layouts without external styling libraries
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Vercel - Automated Cloud Production CI/CD Deployment pipeline
