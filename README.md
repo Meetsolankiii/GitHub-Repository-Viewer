@@ -2,7 +2,7 @@
 
 A dynamic, responsive React web application that searches GitHub repositories by topic or keyword and evaluates them using a **Custom Performance & Quality Scoring Algorithm**. Instead of relying purely on raw star counts, this application analyzes repository health metrics to surface the absolute best matches first.
 
-🌐 **Live Demo:** [Your Vercel Deployment Link Here]
+🌐 **Live Demo:** : https://git-hub-repository-viewer-blue.vercel.app/
 
 ---
 
